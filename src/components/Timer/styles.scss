@@ -1,0 +1,78 @@
+@import "../../styles/variables.scss";
+
+.timer-container {
+    width: 60%;
+
+    margin-bottom: 20px;
+}
+
+@keyframes borderBottom {
+    to {
+        width: 99%;
+        height: 99%;
+    }
+    from {
+        width: 0%;
+        height: 0%;
+    }
+}
+
+@keyframes borderTop{
+    to {
+        width: 99%;
+        height: 99%;
+    }
+    from {
+        width: 0%;
+        height: 0%;
+    }
+}
+
+.timer-content {
+    width: 120px;
+
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 700;
+
+    margin-left: auto;
+
+    color: $blue-medium;
+    background: none;
+
+    outline: none;
+    border: none;
+
+    padding: .8rem;
+
+    user-select: none;
+    position: relative;
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+    }
+    
+    &:before {
+      border-bottom: 1px solid $green-light;
+      border-left: 1px solid $green-light;
+      
+      left: 0;
+      bottom: 0;
+
+      animation: borderBottom 61s linear;
+    }
+    
+    &:after {
+      border-top: 1px solid $green-light;
+      border-right: 1px solid $green-light;
+      
+      top: 0;
+      right: 0;
+
+      animation: borderBottom 61s linear;
+    }
+}
+  
+  
