@@ -61,7 +61,7 @@
       left: 0;
       bottom: 0;
 
-      animation: borderBottom 61s linear;
+      animation: borderBottom 60s linear forwards;
     }
     
     &:after {
@@ -71,7 +71,7 @@
       top: 0;
       right: 0;
 
-      animation: borderBottom 61s linear;
+      animation: borderBottom 60s linear forwards;
     }
 }
   
