@@ -32,6 +32,10 @@
         }
     }
 
+    &.error {
+        color: red;
+    }
+
     &::after {
         content: '|';
         animation: textSelect .7s infinite;
@@ -48,17 +52,13 @@
 }
 
 .letter-input {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip-path: rect(0,0,0,0);
-    white-space: nowrap;
-    border-width: 0;
     top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    z-index: -1;
+    background-color: transparent;
+    color: transparent;
+    border: none;
+    outline: none;
 }
