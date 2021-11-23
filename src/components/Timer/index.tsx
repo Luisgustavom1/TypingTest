@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './styles.scss';
-const Timer: React.FC = () => {
+
+interface TimerProps {
+  finishTyping: () => void
+}
+
+const Timer = ({ finishTyping }: TimerProps) => {
   const timerDate = new Date("2019-02-20T00:01:00")
   const [start, setStart] = useState(true)
   const [time, setTime] = useState('01:00')
@@ -14,6 +19,7 @@ const Timer: React.FC = () => {
     if (newTime === '00:00') {
       setTime('00:00')
       setStart(false)
+      finishTyping()
       return
     }
     setTime(newTime)

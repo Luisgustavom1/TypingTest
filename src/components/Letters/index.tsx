@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react';
 
 import './styles.scss';
 
-const Letters: React.FC = () => {
-  const [text, setText] = useState('Aqui vai a palavra para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai a palavra para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. AAAAAAAAAAAAAAAAA dsfdsf sdfsdfsf dsf sdfs fdsf  sad asdasdasdasdas asd as as s s f l dasdbasodnasoidnaiod naid nasido naibdvfvsdbiso baw cdfasiudaowidcn bsvfuiasohdfpvvbipcau fscydshpgdb gpuiewoacnmpesfinacyv  fbansdcna ovyciaud')
+interface LettersProps {
+  allLetters: string[] | undefined
+}
+
+const Letters = ({ allLetters }: LettersProps) => {
+  const [text, setText] = useState('Aqui vai o texto para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai a palavra para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai o texto para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai a palavra para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai o texto para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai a palavra para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai o texto para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai a palavra para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai o texto para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai a palavra para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai o texto para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai a palavra para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai o texto para testarmos nossa velocidade de digitação. Basta ir copiando esse texto. Aqui vai a palavra para testarmos nossa velocidade de digitação. Basta ir copiando esse texto')
   const [focado, setFocado] = useState(true)
   const [lettersClicked, setLettersClicked] = useState<string[]>([]);
   const [error, setError] = useState(false);
+
   const letterInput = document.querySelector('.letter-input') as HTMLInputElement
 
   const nextLine = (index: number) => {
@@ -15,10 +20,11 @@ const Letters: React.FC = () => {
   }
 
   const letterClick = (e) => {
-    console.log(e.charCode, 'tecla');
     const letterClicked = String.fromCharCode(e.charCode)
 
     if (text?.split('')[lettersClicked.length] === letterClicked) {
+      allLetters?.push(letterClicked)
+
       const lettersClickedUpdate = lettersClicked
       lettersClickedUpdate.push(letterClicked)
       setLettersClicked([...lettersClickedUpdate])
@@ -26,8 +32,6 @@ const Letters: React.FC = () => {
       error && setError(false)
 
       if ((lettersClickedUpdate.length / 57) % 2 === 0) {
-        console.log('addsad', lettersClickedUpdate.length % 57);
-        
         nextLine(0)
       }
 
