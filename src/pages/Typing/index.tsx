@@ -1,20 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Letters from '../../components/Letters';
 import Timer from '../../components/Timer';
 import { useLettersContext } from '../../context/lettersContext';
 
 import './styles.scss';
 const Typing = () => {
-  let { lettersForMinute } = useLettersContext()
+  const navigate = useNavigate();
+  const { setLettersForMinute, lettersForMinute } = useLettersContext()
   const allLetters: string[] | undefined = [];
 
-  const finishTyping = () => {
-    console.log('letters For seconds', allLetters.length / 60);   
+  const finishTyping = () => {    
+    const typingOfMinute = allLetters.length;
+    setLettersForMinute(typingOfMinute);
     
-    lettersForMinute = allLetters.length;
+    localStorage.setItem("typing", String(typingOfMinute))
 
-    console.log('lettersForMinute', lettersForMinute);
-    
+    navigate('/')
   }
 
   return(

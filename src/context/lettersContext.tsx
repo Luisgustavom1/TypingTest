@@ -1,7 +1,8 @@
-import { createContext, ReactNode, useContext } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 interface lettersContextData {
-    lettersForMinute: number
+    lettersForMinute: number,
+    setLettersForMinute: (value: number) => void,
 }
 
 interface lettersProvider {
@@ -11,10 +12,10 @@ interface lettersProvider {
 const lettersContext = createContext({} as lettersContextData)
 
 export const LettersProvider = ({ children }: lettersProvider) => {
-    const lettersForMinute = 0;
+    const [lettersForMinute, setLettersForMinute] = useState(0);
 
     return (
-        <lettersContext.Provider value={{ lettersForMinute }}>
+        <lettersContext.Provider value={{ lettersForMinute, setLettersForMinute }}>
             {children}
         </lettersContext.Provider>
     )

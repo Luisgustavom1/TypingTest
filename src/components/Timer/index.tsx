@@ -33,11 +33,12 @@ const Timer = ({ finishTyping }: TimerProps) => {
       return () => clearInterval(interval)
     }
   }, [start])
+
   return (
     <section className="timer-container">
-        <div className="timer-content bannerButton">
-          {time}
-        </div>
+      <div className="timer-content bannerButton">
+        {time}
+      </div>
     </section>
   );
 }
